@@ -1,0 +1,51 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "server side for message server",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js",
+    "logs": "heroku logs --tail -a node-server-t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganeshkumar269/pay4sure.git"
+  },
+  "author": "M.Ganesh Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ganeshkumar269/pay4sure/issues"
+  },
+  "homepage": "https://github.com/ganeshkumar269/pay4sure#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ddos": "^0.2.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "mongodb": "^3.4.1"
+  },
+  "_moduleAliases": {
+    "@createConversation": "util/createConversation.js",
+    "@getUserInfo": "util/getUserInfo.js",
+    "@userExists": "util/userExists",
+    "@conversationExists": "util/conversationExists.js",
+    "@Conversation": "classes/Conversation.js",
+    "@getPastConv": "util/getPastConv.js",
+    "@addUserCredentials": "util/addUserCredentials",
+    "@stringHasher": "util/stringHasher.js",
+    "@getUserCredentials": "util/getUserCredentials.js",
+    "@authenticateUser": "util/authenticateUser.js",
+    "@createMessage": "util/createMessage.js",
+    "@config": "config.js",
+    "@dbHandler": "middlewares/dbHandler.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
