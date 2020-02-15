@@ -19,9 +19,10 @@ module.exports = async (request,response) => {
     console.log("Incoming create Request")
     const user = request.body
     const client = request.app.locals.db
+    console.log(user)
     if(user.username == undefined || user.username == "" || user.password == ""){
         console.log("create.js: Invalid Inputs, empty strings not allowed")
-        response.status(401).json({status:401,message:"Invalid Details,  empty strings not allowed"})
+        response.status(422).json({status:401,message:"Invalid Details,  empty strings not allowed",whatIrecieved:user})
     } else {
         console.log(user);
         response.setHeader('Content-Type','application/json');
