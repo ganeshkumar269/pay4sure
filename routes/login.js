@@ -50,6 +50,6 @@ module.exports = async (req,response)=>{
         }    
     }catch(err){
         console.log("login.js: Try-Catch, err " + err)
-        response.json({status:500})
+        response.statu(500).json({status:500})
     }
 }

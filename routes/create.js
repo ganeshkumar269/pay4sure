@@ -40,7 +40,8 @@ module.exports = async (request,response) => {
                 userId: userId,
                 encryptionKey : encryptionKey,
                 username:user.username,
-                hashedPassword: stringHasher(user.password)
+                hashedPassword: stringHasher(user.password),
+                amountLeft: 0
             }
             console.log("Username isnt in DB, inserting user to DB")
             try {

@@ -45,7 +45,9 @@
     "@authenticateUser": "util/authenticateUser.js",
     "@createMessage": "util/createMessage.js",
     "@config": "config.js",
-    "@dbHandler": "middlewares/dbHandler.js"
+    "@dbHandler": "middlewares/dbHandler.js",
+    "@creditAmount":"util/creditAmount.js",
+    "@debitAmount":"util/debitAmount.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
