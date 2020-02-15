@@ -28,7 +28,9 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
-    "mongodb": "^3.4.1"
+    "mongodb": "^3.4.1",
+    "paypal-rest-sdk": "^1.8.1",
+    "stripe": "^8.17.0"
   },
   "_moduleAliases": {
     "@createConversation": "util/createConversation.js",

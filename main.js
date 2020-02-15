@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var Ddos = require('ddos')
 var cors = require('cors')
 var MongoClient = require('mongodb').MongoClient
-
+var path = require('path');
 
 
 //importing utility functions
@@ -24,10 +24,7 @@ var client = new MongoClient(uri, options)
 //importing route handlers
 var createHandler = require('./routes/create.js')
 var loginHandler = require('./routes/login.js')
-var sendMessageHandler = require('./routes/sendMessage.js')
-var getMessagesHandler = require('./routes/getMessages.js') 
-var pingHandler = require('./routes/ping.js')
-
+var paymentHandler = require('./routes/payment.js')
 
 //importing middlewares
 var splitToken = require('./middlewares/splitToken.js')
@@ -39,6 +36,7 @@ var dbHandler = require("@dbHandler")
 //express handles
 app.use(ddos.express)
 app.use(bodyParser.urlencoded({extended : true}))
+app.use(bodyParser.json())
 app.use(cors())
 app.options("*",cors())
 app.use(express.static('public'))
@@ -48,15 +46,17 @@ app.get('/',(q,s) => {
     console.log("Home Page Request Arrived")
     s.send('index.html')
 })
-app.get('/api/v1/getMessages',dbHandler,splitToken,getMessagesHandler,);
-app.get('/api/v1/ping',dbHandler,splitToken,pingHandler);
+app.get('/api/v1/charge',(q,s)=>{
+    s.sendFile(path.join(__dirname + '/public/pay.html'))
+})
+app.get('/api/v1/success',(q,s) => { s.sendFile(path.join(__dirname + '/public/success.html'))})
+app.get('/api/v1/error',(q,s) => { s.sendFile(path.join(__dirname + '/public/error.html'))})
 
 
 //POST methods
 app.post('/api/v1/create',dbHandler,createHandler);
 app.post('/api/v1/login',dbHandler,loginHandler);
-app.post('/api/v1/sendMessage',dbHandler,splitToken,sendMessageHandler);
-
+app.post('/api/v1/payment',dbHandler,paymentHandler)
 
 //Listener
 client.connect()
