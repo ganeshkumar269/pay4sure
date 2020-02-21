@@ -19,14 +19,14 @@
         data-currency="inr"
         ></script>
         <input type="hidden" name="chargeAmount" value="400">
-        <input type="hidden" name="mode" value="stripe">
+        <input type="hidden" name="modeOfPayment" value="stripe">
     </form>
 
     <form action="/api/v1/payment" method="post">
         <!-- <script src="https://www.paypal.com/sdk/js?AUeTMBxjcr_v3jFL8HhYr-oaWdv_ZAWahZ_VopwbR5A_ZBULvQ9Vv9DyixZ7DWBDXju38z9gmC0DITyg=sb"></script>
         <script>paypal.Buttons().render('body');</script> -->
         <input type="hidden" name="chargeAmount" value="400">
-        <input type="hidden" name="mode" value="paypal">
+        <input type="hidden" name="modeOfPayment" value="paypal">
         <input type="submit">
     </form>
 

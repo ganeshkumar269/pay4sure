@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 //importing custom files
-var getUserCredentials = require("@getUserCredentials")
+var getUserCredentialsByUsername = require("@getUserCredentialsByUsername")
 var config = require("@config")
 const uri = config.DB_URI
 var stringHasher = require('@stringHasher')
@@ -17,7 +17,7 @@ var stringHasher = require('@stringHasher')
 
 module.exports = async (client,user)=>{
     try {
-        var t = await getUserCredentials(client,user.username)
+        var t = await getUserCredentialsByUsername(client,user.username)
     }catch(err){
         console.log("authenticateUser.js: Failed await getUserCrendentials, err "+ err)
         throw err

@@ -47,7 +47,10 @@
     "@config": "config.js",
     "@dbHandler": "middlewares/dbHandler.js",
     "@creditAmount":"util/creditAmount.js",
-    "@debitAmount":"util/debitAmount.js"
+    "@debitAmount":"util/debitAmount.js",
+    "@getUserCredentialsByUsername":"util/getUserCredentialsByUsername.js",
+    "@success":"routes/success.js",
+    "@addRecord":"util/addRecord.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

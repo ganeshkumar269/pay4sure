@@ -12,6 +12,11 @@ require('module-alias/register')
 
 
 module.exports = async (client,userInfo,debitAmount) => {
-    await client.db('pay4sure').collection('Credentials')
-        .update({userId:userInfo.userId},{$inc:{amountLeft:-debitAmount}})
+    try{
+        await client.db('pay4sure').collection('Credentials')
+        .updateOne({userId:userInfo.userId},{$inc:{amountLeft:-debitAmount}})
+        console.log("debitAmount.js: Amount Debited")
+    }catch(err){
+        throw err
+    }
 }

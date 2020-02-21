@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken');
 //importing custom files
 var userExists = require('@userExists');
 var authenticateUser = require("@authenticateUser")
-var getUserCredentials = require('@getUserCredentials')
+var getUserCredentialsByUsername = require('@getUserCredentialsByUsername')
 
 //declaring app variables
 
@@ -28,12 +28,13 @@ module.exports = async (req,response)=>{
                 response.json({status:401,message:"Incorrect Details"})
             else{
                 try{
-                    var userInfo = await getUserCredentials(client,user.username)
+                    var userInfo = await getUserCredentialsByUsername(client,user.username)
                     var userId = userInfo.userId
                     var encryptionKey = userInfo.encryptionKey
+                    var amountLeft = userInfo.amountLeft
                 }catch(err){
                     console.log("login.js: Failed await getUserCredentials, err" + err)
-                    response.statu(400).json({status:400})
+                    response.status(400).json({status:400})
                 }
                 try{
                     var token = jwt.sign({user},"secretkey")
@@ -41,7 +42,7 @@ module.exports = async (req,response)=>{
                     console.log("login.js: JWT error: ", + err)
                     response.json({status:400})
                 }
-                response.status(200).json({status:200,userId:userId,token:"Bearer "+token,encryptionKey:encryptionKey})
+                response.status(200).json({status:200,userId:userId,token:"Bearer "+token,encryptionKey:encryptionKey,amountLeft:amountLeft})
             }
         
         }else{

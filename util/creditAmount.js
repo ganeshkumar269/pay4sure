@@ -13,6 +13,11 @@ const uri = config.DB_URI
 
 
 module.exports = async (client,userInfo,creditAmount) => {
-    await client.db('pay4sure').collection('Credentials')
-        .update({userId:userInfo.userId},{$inc:{amountLeft:creditAmount}})
+    try{
+        await client.db('pay4sure').collection('Credentials')
+        .updateOne({userId:userInfo.userId},{$inc:{amountLeft:creditAmount}})
+        console.log("creditAmount.js: Amount Credited")
+    }catch(err){
+        throw err
+    }
 }

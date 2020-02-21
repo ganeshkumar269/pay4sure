@@ -1,0 +1,6 @@
+PAYPAL: Always send currency codes in capitals like INR not inr 
+Stripe: mulitply the given amount by 100 as 100 is viewed as 1.00 not 100.00
+URL varibles: for the first var add ? at the end of the url and give the anme and then the value like
+    url?name=value
+    for later on the variable as noted as follows
+    url?name1=value1&name2=value2
